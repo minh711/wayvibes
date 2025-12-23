@@ -126,6 +126,25 @@ for f in *.ogg; do ffmpeg -i "$f" "${f%.ogg}.wav"; done && sed -i 's/\.ogg/\.wav
 rm *.ogg # remove ogg files
 ```
 
+## Add to desktop
+
+Run these commands, change parameters as needed:
+
+```sh
+mkdir -p ~/.local/share/applications
+
+cat > ~/.local/share/applications/wayvibes.desktop <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=Wayvibes
+Exec=wayvibes /home/<username>/wayvibes/<sound pack>/ -v <volume number> --background
+Terminal=false
+Categories=Utility;
+EOF
+
+chmod +x ~/.local/share/applications/wayvibes.desktop
+```
+
 ## Why Wayvibes?
 
 Unlike [mechvibes](https://mechvibes.com) and [rustyvibes](https://github.com/KunalBagaria/rustyvibes), which encounter [issues](https://github.com/KunalBagaria/rustyvibes/issues/23) on Wayland, Wayvibes aims to provide a seamless integration with wayland.
